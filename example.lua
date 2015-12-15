@@ -18,7 +18,7 @@ m:add(nn.LogSoftMax())
 pred = m:forward(x)
 loss = nn.ClassNLLCriterion()
 err = loss:forward(pred, y)
-gradLoss = loss:backward(pred, y)  -- ERROR: /Users/voinea/torch/install/share/lua/5.1/nn/Parallel.lua:54: inconsistent tensor size at /Users/voinea/torch/pkg/torch/lib/TH/generic/THTensorCopy.c:7
+gradLoss = loss:backward(pred, y)
 m:zeroGradParameters()
-m:backward(x, gradLoss)
+m:backward(x, gradLoss)           -- -- ERROR: /Users/voinea/torch/install/share/lua/5.1/nn/Parallel.lua:54: inconsistent tensor size at /Users/voinea/torch/pkg/torch/lib/TH/generic/THTensorCopy.c:7
 m:updateParameters(0.01)
